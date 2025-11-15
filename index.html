@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>jBoxTech – On-Prem AI Appliance</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="jBoxTech builds on-prem AI appliances for small law and accounting firms. Private, local, no cloud.">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #050712;
+      color: #e5f0ff;
+      line-height: 1.6;
+    }
+    a { color: #7fd4ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    header {
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      background: radial-gradient(circle at top left, #163b73, #050712 55%);
+    }
+    .container {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0 0.5rem;
+    }
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .logo-wrap img {
+      width: 44px;
+      height: 44px;
+    }
+    .logo-text {
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      font-size: 1.1rem;
+    }
+    .tagline-small {
+      font-size: 0.8rem;
+      opacity: 0.7;
+    }
+    .nav-right {
+      font-size: 0.85rem;
+      opacity: 0.8;
+    }
+    .hero {
+      padding: 3rem 0 3.5rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 2rem;
+      }
+      .hero-visual { order: -1; }
+    }
+    .eyebrow {
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      color: #7fd4ff;
+      margin-bottom: 0.75rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 3vw, 3rem);
+      margin-bottom: 1rem;
+    }
+    .hero h1 span {
+      color: #8af29d;
+    }
+    .hero p {
+      font-size: 0.98rem;
+      max-width: 32rem;
+      opacity: 0.9;
+    }
+    .hero-actions {
+      margin-top: 1.7rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      align-items: center;
+    }
+    .btn {
+      border-radius: 999px;
+      padding: 0.7rem 1.4rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #2b8fff, #35d4a5);
+      color: #020308;
+      box-shadow: 0 0 18px rgba(53, 212, 165, 0.45);
+    }
+    .btn-ghost {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.18);
+      color: #e5f0ff;
+    }
+    .hero-meta {
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      opacity: 0.7;
+    }
+    .hero-visual {
+      background: radial-gradient(circle at top, #1c417a, #050712 70%);
+      border-radius: 1.4rem;
+      padding: 1.4rem;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.8);
+    }
+    .hero-card {
+      border-radius: 1rem;
+      padding: 1rem 1rem 1.1rem;
+      background: rgba(2,6,23,0.65);
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      backdrop-filter: blur(14px);
+    }
+    .hero-card h2 {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      opacity: 0.8;
+      margin-bottom: 0.5rem;
+    }
+    .hero-grid-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 0.7rem;
+      margin-top: 0.6rem;
+    }
+    .pill {
+      padding: 0.35rem 0.55rem;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      border: 1px solid rgba(148,163,184,0.5);
+      opacity: 0.85;
+    }
+    .pill span {
+      font-weight: 600;
+      color: #8af29d;
+    }
+    .section {
+      padding: 2.75rem 0;
+      border-top: 1px solid rgba(15,23,42,0.9);
+      border-bottom: 1px solid rgba(15,23,42,0.9);
+      background: radial-gradient(circle at top right, #071626, #020308 60%);
+    }
+    .section h2 {
+      font-size: 1.4rem;
+      margin-bottom: 1.2rem;
+    }
+    .section-sub {
+      font-size: 0.9rem;
+      opacity: 0.8;
+      max-width: 40rem;
+      margin-bottom: 1.8rem;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 1.4rem;
+    }
+    @media (max-width: 900px) {
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .card {
+      background: rgba(15,23,42,0.96);
+      border-radius: 1rem;
+      border: 1px solid rgba(148,163,184,0.35);
+      padding: 1rem 1.1rem 1.2rem;
+      font-size: 0.88rem;
+    }
+    .card h3 {
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+    }
+    .badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(56,189,248,0.16);
+      color: #7fd4ff;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+    ul {
+      padding-left: 1rem;
+      margin-top: 0.4rem;
+    }
+    li {
+      margin-top: 0.25rem;
+    }
+    .two-col {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 1.4rem;
+    }
+    @media (max-width: 900px) {
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+    }
+    .step-list {
+      font-size: 0.9rem;
+    }
+    .step {
+      margin-bottom: 0.75rem;
+    }
+    .step strong {
+      color: #8af29d;
+    }
+    .callout {
+      background: rgba(22,163,74,0.06);
+      border: 1px solid rgba(74,222,128,0.24);
+      border-radius: 0.9rem;
+      padding: 0.9rem 1rem;
+      font-size: 0.85rem;
+      margin-top: 0.8rem;
+    }
+    footer {
+      padding: 1.8rem 0;
+      font-size: 0.78rem;
+      text-align: center;
+      color: rgba(148,163,184,0.9);
+      background: #020308;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="nav">
+        <div class="logo-wrap">
+          <img src="logo.png" alt="jBoxTech logo">
+          <div>
+            <div class="logo-text">jBoxTech</div>
+            <div class="tagline-small">On-prem AI appliances</div>
+          </div>
+        </div>
+        <div class="nav-right">
+          Serving small law and accounting firms in NW Ohio
+        </div>
+      </div>
+
+      <section class="hero">
+        <div>
+          <div class="eyebrow">Private AI, inside your office</div>
+          <h1>jBox puts AI <span>inside your network</span>, not in the cloud.</h1>
+          <p>
+            A local AI appliance that reads PDFs, scans and audio, builds timelines,
+            drafts first-pass documents and then wipes itself. No client data leaves
+            your building. No cloud. No subscriptions.
+          </p>
+          <div class="hero-actions">
+            <a href="mailto:YOUR_EMAIL_HERE?subject=jBoxTech demo" class="btn btn-primary">
+              Request a 30-minute demo
+            </a>
+            <a href="#how-it-works" class="btn btn-ghost">
+              See how it works
+            </a>
+          </div>
+          <div class="hero-meta">
+            Built in Toledo, Ohio. Designed for 2–20 person law and accounting firms that want AI without giving up control.
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-card">
+            <h2>What a jBox does</h2>
+            <div class="hero-grid-row">
+              <div class="pill"><span>1.</span> Read PDFs and scans</div>
+              <div class="pill"><span>2.</span> Transcribe audio</div>
+              <div class="pill"><span>3.</span> Summarize, draft, organize</div>
+            </div>
+            <div class="hero-grid-row">
+              <div class="pill"><span>4.</span> Keep data on-prem</div>
+              <div class="pill"><span>5.</span> No cloud APIs</div>
+              <div class="pill"><span>6.</span> Session wipe on logout</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <h2>Built for small offices, not giant IT departments</h2>
+        <p class="section-sub">
+          jBox is a physical AI appliance that lives on your network. Staff open it in a browser,
+          drag in documents or audio, click the task they want, and download the result.
+          No logins to a cloud AI, no vendor hoarding your data.
+        </p>
+
+        <div class="feature-grid">
+          <div class="card">
+            <div class="badge">Document grunt work</div>
+            <h3>Summaries, timelines, comparisons</h3>
+            <p>
+              Upload pleadings, contracts, police reports, discovery, or financials.
+              jBox creates structured summaries, pulls parties and dates, builds timelines,
+              and compares versions so you can see what changed.
+            </p>
+            <ul>
+              <li>Summaries for client or internal use</li>
+              <li>Chronologies and issue lists</li>
+              <li>Redline-style change descriptions</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="badge">Audio and transcripts</div>
+            <h3>Interviews and depositions, cleaned up</h3>
+            <p>
+              jBox turns interviews, meetings and depositions into text,
+              then highlights key points, contradictions and follow-ups.
+            </p>
+            <ul>
+              <li>Voice-to-text for recordings</li>
+              <li>Key admissions and themes pulled out</li>
+              <li>Action items and follow-up questions</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="badge">Drafting assist</div>
+            <h3>First-pass drafts you can edit</h3>
+            <p>
+              You provide the facts and the law. jBox turns that into
+              rough letters, outlines or motion drafts that you review,
+              edit and sign. It never “practices law” on its own.
+            </p>
+            <ul>
+              <li>Demand letters and client letters</li>
+              <li>Argument outlines and talking points</li>
+              <li>Discovery requests and responses (first draft)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="how-it-works">
+      <div class="container two-col">
+        <div>
+          <h2>How a jBox fits into your office</h2>
+          <p class="section-sub">
+            You keep your existing case management, file server and email.
+            jBox sits beside them as a power tool your team can open in any browser.
+          </p>
+
+          <div class="step-list">
+            <div class="step">
+              <strong>1. jBox installs on your network.</strong><br>
+              We deliver and configure the appliance inside your office network.
+              It works even if your internet goes down.
+            </div>
+            <div class="step">
+              <strong>2. Staff use it from a browser.</strong><br>
+              They go to a local address like <code>http://jbox</code>, choose a task
+              (summarize, analyze, draft, timeline), and drop in files.
+            </div>
+            <div class="step">
+              <strong>3. Results go back to your systems.</strong><br>
+              Staff download Word or PDF drafts and save them to your normal
+              matter folders. When they end the session, jBox wipes the working data.
+            </div>
+          </div>
+
+          <div class="callout">
+            jBox is a tool for attorneys and staff. You choose the facts and the law.
+            jBox handles reading, organizing and drafting. You keep control and judgment.
+          </div>
+        </div>
+
+        <div>
+          <h2>Why firms choose on-prem AI</h2>
+          <div class="card" style="margin-bottom:0.9rem;">
+            <h3>Privacy and control</h3>
+            <p>
+              Client documents never leave your network. No uploads to third-party AI
+              providers. No “training on your data.” You can unplug jBox from the
+              internet and it still works.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Predictable cost</h3>
+            <p>
+              You buy the appliance, not a seat license for every user.
+              No surprise token bills. No per-document fees. One box can
+              serve a whole small firm.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2>Talk about a pilot jBox for your firm</h2>
+        <p class="section-sub">
+          If you are a small law or accounting firm in the Toledo or NW Ohio area,
+          we can start with a simple pilot: one box, one office, one or two key workflows,
+          and clear before-and-after results.
+        </p>
+        <div class="hero-actions">
+          <a href="mailto:YOUR_EMAIL_HERE?subject=jBoxTech pilot inquiry" class="btn btn-primary">
+            Email about a pilot
+          </a>
+          <span class="hero-meta">
+            Replace <code>YOUR_EMAIL_HERE</code> with your real address in the HTML before going live.
+          </span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      &copy; <span id="year"></span> jBoxTech LLC. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
