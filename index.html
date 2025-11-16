@@ -48,9 +48,10 @@
     }
 
     .brand-logo {
-      height: 240px; /* tweak this up/down for logo size */
-      width: auto;
+      width: min(100%, 320px);
+      height: auto;
       display: block;
+      aspect-ratio: 979 / 410;
     }
 
     .brand-text {
@@ -224,6 +225,10 @@
       background: radial-gradient(circle at top right, #071626, #020308 60%);
     }
 
+    .section + .section {
+      border-top: none;
+    }
+
     .section h2 {
       font-size: 1.4rem;
       margin-bottom: 1.2rem;
@@ -340,7 +345,7 @@
             your building. No cloud. No subscriptions.
           </p>
           <div class="hero-actions">
-            <a href="mailto:stevensdale@gmail.com?subject=jBoxTech demo request" class="btn btn-primary">
+              <a href="mailto:stevensdale@gmail.com?subject=jBoxTech%20demo%20request" class="btn btn-primary">
               Request a demo
             </a>
             
@@ -497,7 +502,7 @@
     </p>
 
     <div class="hero-actions">
-      <a href="mailto:stevensdale@gmail.com?subject=jBoxTech trial inquiry" class="btn btn-primary">
+        <a href="mailto:stevensdale@gmail.com?subject=jBoxTech%20trial%20inquiry" class="btn btn-primary">
         Email about setting one up
       </a>
       
